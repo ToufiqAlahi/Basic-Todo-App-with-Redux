@@ -21,6 +21,13 @@ export default function TodoList() {
               return true;
           }
         })
+        .filter((todo) => {
+          const { colors } = filters;
+          if (colors.length > 0) {
+            return colors.includes(todo?.color);
+          }
+          return true;
+        })
         .map((todo) => (
           <Todo key={todo.id} todo={todo} />
         ))}
